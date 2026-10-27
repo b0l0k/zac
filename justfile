@@ -1,6 +1,11 @@
-# install foundry submodules and action dependencies
+# install foundry submodules and action dependencies from the committed lockfile
 install:
     git submodule update --init --recursive
+    cd action && bun install --frozen-lockfile
+
+# intentionally resolve action dependencies and update action/bun.lock
+# (use after changing action/package.json)
+action-install-update:
     cd action && bun install
 
 # build solidity contracts

@@ -13,5 +13,5 @@ runs:
         ZAC_CONFIG_PATH: ${{ inputs.config-path }}
       run: |
         cd "${{ github.action_path }}/.."
-        bun install --cwd action
+        bun install --cwd action --frozen-lockfile
         bun ./action/cli.ts generate "$ZAC_CONFIG_PATH"

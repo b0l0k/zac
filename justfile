@@ -1,7 +1,11 @@
 # install foundry submodules and action dependencies
 install:
     git submodule update --init --recursive
-    cd action && bun install
+    cd action && bun install --frozen-lockfile
+
+# verify frozen Bun installs reject a manifest/lock mismatch
+check-action-frozen-install:
+    bash scripts/check-action-frozen-install.sh
 
 # build solidity contracts
 contracts-build:
